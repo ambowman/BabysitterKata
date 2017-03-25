@@ -163,5 +163,35 @@ namespace Tests
             var result = babySitterFeeCalculator.CheckIsNoon("1:00PM");
             result.ShouldBe(false);
         }
+        [Fact]
+        public void ConvertRawTimeDoubleToFractionalHoursGiven4point3Becomes4point5()
+        {
+            var result = babySitterFeeCalculator.ConvertRawTimeDoubleToFractionalHours(4.3);
+            result.ShouldBe(4.5);
+        }
+        [Fact]
+        public void ConvertRawTimeDoubleToFractionalHoursGiven4Remians4()
+        {
+            var result = babySitterFeeCalculator.ConvertRawTimeDoubleToFractionalHours(4.0);
+            result.ShouldBe(4.0);
+        }
+        [Fact]
+        public void ConvertRawTimeDoubleToFractionalHoursGiven12Point45Returns12Point75()
+        {
+            var result = babySitterFeeCalculator.ConvertRawTimeDoubleToFractionalHours(12.45);
+            result.ShouldBe(12.75);
+        }
+        [Fact]
+        public void StartAndEndAfterMidnightStart1AmEnd2AmBed1Am()
+        {
+            var result = babySitterFeeCalculator.CalculateRateStartAndEndAfterMid(1.00, 2.00);
+            result.ShouldBe(16);
+        }
+        [Fact]
+        public void StartAndEndAfterMidnightStart1AmEnd4AmBed10Pm()
+        {
+            var result = babySitterFeeCalculator.CalculateRateStartAndEndAfterMid(1.00, 4.00);
+            result.ShouldBe(48);
+        }
     }
 }

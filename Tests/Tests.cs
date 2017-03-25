@@ -76,5 +76,19 @@ namespace Tests
             var result = babySitterFeeCalculator.ConvertTimeArrayToDouble(timeArray);
             result.ShouldBe(5.00);
         }
+        [Fact]
+        public void MakeMilitaryTimeMid()
+        {
+            bool isPm = false;
+            var result = babySitterFeeCalculator.MakeMilitaryTime(12.00, isPm);
+            result.ShouldBe(24.00);
+        }
+        [Fact]
+        public void MakeMilitaryTimeNoon()
+        {
+            bool isPm = true;
+            var result = babySitterFeeCalculator.MakeMilitaryTime(12.00, isPm);
+            result.ShouldBe(12.00);
+        }
     }
 }

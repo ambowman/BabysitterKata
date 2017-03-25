@@ -82,6 +82,13 @@ namespace BabysitterKat
                 timeDouble = Double.Parse(time);
                 return timeDouble;
             }
+            public double MakeMilitaryTime(double doubleTimeDec, bool isPm)
+            {
+                if (!isPm && doubleTimeDec == 12.0)
+                    return doubleTimeDec + 12.0;
+                return doubleTimeDec;
+            }
+            
         }
     }
 }

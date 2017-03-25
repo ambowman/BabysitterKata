@@ -282,6 +282,11 @@ namespace BabysitterKat
                     fee = CalculateRateBedtimeBeforeOrEqualStartBothBeforeMidEndAfterMid(doubleStartTime, doubleEndTime);
                     return fee;
                 }
+                else if (doubleStartTime < doubleEndTime && doubleEndTime <= 24.0 && doubleStartTime < 24.0 && doubleStartTime > 4.0 && (doubleBedTime >= doubleEndTime || doubleBedTime <= 4.0))
+                {
+                    fee = CalculateRateStartBeforeMidBedtimeEqualsOrAfterEndAndEndBeforeMid(doubleStartTime, doubleEndTime);
+                    return fee;
+                }
                 else
                     return fee;
             }

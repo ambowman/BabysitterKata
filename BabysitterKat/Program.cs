@@ -244,6 +244,24 @@ namespace BabysitterKat
 
                 return fee;
             }
+
+            public int CalculateRateStartBeforeBedBothBeforeMidEndAfterMid(double doubleStartTime, double doubleBedTime, double doubleEndTime)
+            {
+                doubleStartTime = ConvertRawTimeDoubleToFractionalHours(doubleStartTime);
+                doubleBedTime = ConvertRawTimeDoubleToFractionalHours(doubleBedTime);
+                doubleEndTime = ConvertRawTimeDoubleToFractionalHours(doubleEndTime);
+                int fee = 0;
+                double doubleFee = 0.0;
+ 
+                doubleFee = doubleBedTime - doubleStartTime;
+                fee = Convert.ToInt32(doubleFee) * 12;
+                doubleFee = 24 - doubleBedTime;
+                fee = fee + Convert.ToInt32(doubleFee) * 8;
+                doubleFee = doubleEndTime;
+                fee = fee + Convert.ToInt32(doubleFee) * 16;
+  
+                return fee;
+            }
         }
     }
 }

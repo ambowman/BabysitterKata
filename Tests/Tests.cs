@@ -104,5 +104,11 @@ namespace Tests
             var result = babySitterFeeCalculator.MakeMilitaryTime(1.00, isPm);
             result.ShouldBe(13.00);
         }
+        [Fact]
+        public void ConvertTimeString()
+        {
+            var result = babySitterFeeCalculator.ConvertTimeString("5:00PM");
+            result.ShouldBe(17.00);
+        }
     }
 }

@@ -90,7 +90,20 @@ namespace BabysitterKat
                     return doubleTimeDec + 12.0;
                 return doubleTimeDec;
             }
-            
+            public double ConvertTimeString(string time)
+            {
+                double convertedDoubleTime = 0.0;
+                time = time.ToUpper();
+                bool isPm = CheckAmOrPm(time);
+
+                char[] timeArray = MakeCharArray(time);
+                timeArray = RemoveAmPm(timeArray);
+                timeArray = RemoveColon(timeArray);
+                convertedDoubleTime = ConvertTimeArrayToDouble(timeArray);
+                convertedDoubleTime = MakeMilitaryTime(convertedDoubleTime, isPm);
+                return convertedDoubleTime;
+            }
+
         }
     }
 }

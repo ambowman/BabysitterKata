@@ -48,7 +48,7 @@ namespace BabysitterKat
             public char[] MakeCharArray(string time)
             {
                 char[] timeArray = new char[time.Length]; 
-                return timeArray;
+                return timeArray = time.ToCharArray();
             }
         }
     }

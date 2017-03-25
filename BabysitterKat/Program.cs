@@ -58,6 +58,10 @@ namespace BabysitterKat
                 }
                 return false;
             }
+            public char[] RemoveAm(char[] timeArray)
+            {
+                return timeArray;
+            }
         }
     }
 }

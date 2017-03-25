@@ -44,5 +44,13 @@ namespace Tests
             result.ShouldBe(false);
 
         }
+        [Fact]
+        public void RemoveAmFromCharArray()
+        {
+            string timeString = "5:00AM";
+            var timeArray = babySitterFeeCalculator.MakeCharArray(timeString);
+            var result = babySitterFeeCalculator.RemoveAm(timeArray);
+            result.ShouldBe("5:00");
+        }
     }
 }

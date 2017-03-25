@@ -29,10 +29,13 @@ namespace BabysitterKat
                 Console.WriteLine("Please enter the times in this format: XX:XXPM Midnight is 12:00AM");
                 Console.WriteLine("Please enter a start time for the babysitting service:");
                 startTime = Console.ReadLine();
+                doubleStartTime = babySitterFeeCalculator.CheckAndAssignStartTime(startTime);
                 Console.WriteLine("Please enter an end time for the babysitting service:");
                 endTime = Console.ReadLine();
+                doubleEndTime = babySitterFeeCalculator.CheckAndAssignEndTime(endTime, doubleStartTime);
                 Console.WriteLine("What time is the child's bedtime:");
                 bedTime = Console.ReadLine();
+                doubleBedTime = babySitterFeeCalculator.ConvertTimeString(bedTime);
                 Console.WriteLine("Are you done calculating babysitting fees? Enter YES/NO");
                 end = Console.ReadLine();
                 end = end.ToUpper();
@@ -122,6 +125,32 @@ namespace BabysitterKat
                     return true;
                 }
                 return false;
+            }
+            public double CheckAndAssignStartTime(string startTime)
+            {
+                double doubleStartTime = 0.0;
+                doubleStartTime = ConvertTimeString(startTime);
+
+                while (!CheckStartTime(doubleStartTime) || CheckIsNoon(startTime))
+                {
+                    Console.WriteLine("The start time you entered was incorrect. Please enter a start time for the babysitting service:");
+                    startTime = Console.ReadLine();
+                    doubleStartTime = ConvertTimeString(startTime);
+                }
+                return doubleStartTime;
+            }
+
+            public double CheckAndAssignEndTime(string endTime, double doubleStartTime)
+            {
+                double doubleEndTime = 0.0;
+                doubleEndTime = ConvertTimeString(endTime);
+                while (!CheckEndTime(doubleEndTime, doubleStartTime) || CheckIsNoon(endTime))
+                {
+                    Console.WriteLine("The end time you entered was incorrect. Please enter an end time for the babysitting service:");
+                    endTime = Console.ReadLine();
+                    doubleEndTime = ConvertTimeString(endTime);
+                }
+                return doubleEndTime;
             }
 
         }

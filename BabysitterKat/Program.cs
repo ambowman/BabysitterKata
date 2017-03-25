@@ -50,7 +50,7 @@ namespace BabysitterKat
             }
             public char[] MakeCharArray(string time)
             {
-                char[] timeArray = new char[time.Length]; 
+                char[] timeArray = new char[time.Length];
                 return timeArray = time.ToCharArray();
             }
             public bool CheckAmOrPm(string time)
@@ -89,7 +89,7 @@ namespace BabysitterKat
             {
                 if (!isPm && doubleTimeDec == 12.0)
                     return doubleTimeDec + 12.0;
-                if(isPm && doubleTimeDec< 12.0)
+                if (isPm && doubleTimeDec < 12.0)
                     return doubleTimeDec + 12.0;
                 return doubleTimeDec;
             }
@@ -221,7 +221,7 @@ namespace BabysitterKat
                 doubleEndTime = ConvertRawTimeDoubleToFractionalHours(doubleEndTime);
                 int fee = 0;
                 double doubleFee = 0.0;
- 
+
                 doubleFee = 24 - doubleStartTime;
                 fee = Convert.ToInt32(doubleFee) * 12;
                 doubleFee = doubleEndTime;
@@ -236,7 +236,7 @@ namespace BabysitterKat
                 doubleEndTime = ConvertRawTimeDoubleToFractionalHours(doubleEndTime);
                 int fee = 0;
                 double doubleFee = 0.0;
- 
+
                 doubleFee = doubleBedTime - doubleStartTime;
                 fee = Convert.ToInt32(doubleFee) * 12;
                 doubleFee = doubleEndTime - doubleBedTime;
@@ -252,15 +252,28 @@ namespace BabysitterKat
                 doubleEndTime = ConvertRawTimeDoubleToFractionalHours(doubleEndTime);
                 int fee = 0;
                 double doubleFee = 0.0;
- 
+
                 doubleFee = doubleBedTime - doubleStartTime;
                 fee = Convert.ToInt32(doubleFee) * 12;
                 doubleFee = 24 - doubleBedTime;
                 fee = fee + Convert.ToInt32(doubleFee) * 8;
                 doubleFee = doubleEndTime;
                 fee = fee + Convert.ToInt32(doubleFee) * 16;
-  
+
                 return fee;
+            }
+            public int CalculateRate(double doubleStartTime, double doubleBedTime, double doubleEndTime)
+            {
+
+                int fee = 0;
+
+                if (doubleStartTime < doubleEndTime && doubleEndTime <= 4.0 && doubleStartTime < 4.0 )
+                {
+                    fee = CalculateRateStartAndEndAfterMid(doubleStartTime, doubleEndTime);
+                    return fee;
+                }
+                else
+                    return fee;
             }
         }
     }

@@ -215,7 +215,13 @@ namespace Tests
         public void StartBeforeMidBedtimeEqualsOrAfterEndAndEndAfterMid()
         {
             var result = babySitterFeeCalculator.CalculateRateStartBeforeOrAtMidBedAndEndAfterMid(17.00, 1.00);
-            result.ShouldBe(72);
+            result.ShouldBe(100);
+        }
+        [Fact]
+        public void StartBeforeBedBothBeforeMidEndBeforeMid()
+        {
+            var result = babySitterFeeCalculator.CalculateRateStartBeforeBedBothBeforeMidEndBeforeMid(17.00, 20.00, 23.00);
+            result.ShouldBe(60);
         }
     } 
 }

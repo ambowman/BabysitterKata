@@ -178,7 +178,8 @@ namespace BabysitterKat
                 {
                     doubleFee = doubleEndTime - doubleStartTime;
                     fee = Convert.ToInt32(Math.Ceiling(doubleFee)) * 16;
-                }else if(doubleStartTime > doubleEndTime)
+                }
+                else if (doubleStartTime > doubleEndTime)
                 {
                     doubleFee = doubleEndTime - (doubleStartTime - 24);
                     fee = Convert.ToInt32(Math.Ceiling(doubleFee)) * 16;
@@ -213,7 +214,8 @@ namespace BabysitterKat
                     doubleFee = doubleEndTime;
                     fee = fee + Convert.ToInt32(Math.Ceiling(doubleFee)) * 16;
                     return fee;
-                }else if((24-doubleStartTime)-Math.Floor(24 - doubleStartTime) > 0)
+                }
+                else if ((24 - doubleStartTime) - Math.Floor(24 - doubleStartTime) > 0)
                 {
                     doubleFee = 24 - doubleStartTime;
                     fee = Convert.ToInt32(Math.Ceiling(doubleFee)) * 8;
@@ -228,10 +230,11 @@ namespace BabysitterKat
                     doubleFee = doubleEndTime;
                     fee = fee + Convert.ToInt32(Math.Ceiling(doubleFee)) * 16;
                     return fee;
-                }else
+                }
+                else
 
 
-                return fee;
+                    return fee;
             }
 
             public int CalculateRateStartBeforeMidBedtimeEqualsOrAfterEndAndEndBeforeMid(double doubleStartTime, double doubleEndTime)
@@ -285,15 +288,51 @@ namespace BabysitterKat
                 doubleStartTime = ConvertRawTimeDoubleToFractionalHours(doubleStartTime);
                 doubleBedTime = ConvertRawTimeDoubleToFractionalHours(doubleBedTime);
                 doubleEndTime = ConvertRawTimeDoubleToFractionalHours(doubleEndTime);
-                int fee = 0;
-                double doubleFee = 0.0;
+                int feeStartToBed = 0;
+                int feeBedToEnd = 0;
+                int totalFee = 0;
+                double doubleStartToBedFee = 0.0;
+                double doubleBedToEndFee = 0.0;
 
-                doubleFee = doubleBedTime - doubleStartTime;
-                fee = Convert.ToInt32(doubleFee) * 12;
-                doubleFee = doubleEndTime - doubleBedTime;
-                fee = fee + Convert.ToInt32(doubleFee) * 8;
+                if ((((doubleBedTime - doubleStartTime) - Math.Floor(doubleBedTime - doubleStartTime)) > 0)
+                    && (((doubleEndTime - doubleBedTime) - Math.Floor(doubleEndTime - doubleBedTime)) > 0))
+                {
+                    doubleStartToBedFee = doubleBedTime - doubleStartTime;
+                    feeStartToBed = Convert.ToInt32(Math.Ceiling(doubleStartToBedFee)) * 12;
+                    doubleBedToEndFee = doubleEndTime - doubleBedTime;
+                    feeBedToEnd = Convert.ToInt32(Math.Floor(doubleBedToEndFee)) * 8;
+                    totalFee = feeBedToEnd + feeStartToBed;
 
-                return fee;
+                    return totalFee;
+                }
+                else
+                {
+                    if (((doubleBedTime - doubleStartTime) - Math.Floor(doubleBedTime - doubleStartTime)) == 0)
+                    {
+                        doubleStartToBedFee = doubleBedTime - doubleStartTime;
+                        feeStartToBed = Convert.ToInt32(doubleStartToBedFee) * 12;
+                    }
+                    else if (((doubleBedTime - doubleStartTime) - Math.Floor(doubleBedTime - doubleStartTime)) > 0)
+                    {
+                        doubleStartToBedFee = doubleBedTime - doubleStartTime;
+                        feeStartToBed = Convert.ToInt32(Math.Ceiling(doubleStartToBedFee)) * 12;
+                    }
+
+                    if (((doubleEndTime - doubleBedTime) - Math.Floor(doubleEndTime - doubleBedTime)) == 0)
+                    {
+                        doubleBedToEndFee = doubleEndTime - doubleBedTime;
+                        feeBedToEnd = Convert.ToInt32(doubleBedToEndFee) * 8;
+                    }
+                    else if (((doubleEndTime - doubleBedTime) - Math.Floor(doubleEndTime - doubleBedTime)) > 0)
+                    {
+                        doubleBedToEndFee = doubleEndTime - doubleBedTime;
+                        feeBedToEnd = Convert.ToInt32(Math.Ceiling(doubleBedToEndFee)) * 8;
+                    }
+
+                    totalFee = feeBedToEnd + feeStartToBed;
+
+                    return totalFee;
+                }
             }
 
             public int CalculateRateStartBeforeBedBothBeforeMidEndAfterMid(double doubleStartTime, double doubleBedTime, double doubleEndTime)
@@ -318,7 +357,7 @@ namespace BabysitterKat
 
                 int fee = 0;
 
-                if (doubleEndTime <= 4.0 && (doubleStartTime < 4.0 || doubleStartTime > 24) )
+                if (doubleEndTime <= 4.0 && (doubleStartTime < 4.0 || doubleStartTime > 24))
                 {
                     fee = CalculateRateStartAndEndAfterMid(doubleStartTime, doubleEndTime);
                     return fee;
@@ -340,7 +379,7 @@ namespace BabysitterKat
                 }
                 else if (doubleStartTime <= 24 && doubleEndTime <= 4.0 && doubleBedTime <= 4.00)
                 {
-                    fee = CalculateRateStartBeforeOrAtMidBedAndEndAfterMid(doubleStartTime,  doubleEndTime);
+                    fee = CalculateRateStartBeforeOrAtMidBedAndEndAfterMid(doubleStartTime, doubleEndTime);
                     return fee;
                 }
                 else if (doubleStartTime < doubleBedTime && doubleBedTime < doubleEndTime && doubleEndTime <= 24.0)

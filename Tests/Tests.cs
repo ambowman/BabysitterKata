@@ -415,6 +415,48 @@ namespace Tests
             var result = babySitterFeeCalculator.CalculateRate(17.00, 1.00, 1.30);
             result.ShouldBe(116);
         }
+        [Fact]
+        public void CalculateRateStart5ThirtyPMBed7PmEnd11PM()
+        {
+            var result = babySitterFeeCalculator.CalculateRate(17.30, 19.00, 23.00);
+            result.ShouldBe(56);
+        }
+        [Fact]
+        public void CalculateRateStart5ThirtyPMBed7ThirtyPmEnd11PM()
+        {
+            var result = babySitterFeeCalculator.CalculateRate(17.30, 19.30, 23.00);
+            result.ShouldBe(56);
+        }
+        [Fact]
+        public void CalculateRateStart5ThirtyPMBed7ThirtyPmEnd11ThirtyPM()
+        {
+            var result = babySitterFeeCalculator.CalculateRate(17.30, 19.30, 23.30);
+            result.ShouldBe(56);
+        }
+        [Fact]
+        public void CalculateRateStart5PMBed7ThirtyPmEnd11ThirtyPM()
+        {
+            var result = babySitterFeeCalculator.CalculateRate(17.00, 19.30, 23.30);
+            result.ShouldBe(68);
+        }
+        [Fact]
+        public void CalculateRateStart5PMBed7PmEnd11ThirtyPM()
+        {
+            var result = babySitterFeeCalculator.CalculateRate(17.00, 19.00, 23.30);
+            result.ShouldBe(64);
+        }
+        [Fact]
+        public void CalculateRateStart5PMBed7ThirtyPmEnd11PM()
+        {
+            var result = babySitterFeeCalculator.CalculateRate(17.00, 19.30, 23.00);
+            result.ShouldBe(60);
+        }
+        [Fact]
+        public void CalculateRateStart5PMBed7ThirtyPmEnd11FifteenPM()
+        {
+            var result = babySitterFeeCalculator.CalculateRate(17.00, 19.30, 23.45);
+            result.ShouldBe(60);
+        }
 
     } 
 }

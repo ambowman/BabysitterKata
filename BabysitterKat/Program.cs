@@ -206,10 +206,30 @@ namespace BabysitterKat
                 int fee = 0;
                 double doubleFee = 0.0;
 
-                doubleFee = 24 - doubleStartTime;
-                fee = Convert.ToInt32(doubleFee) * 8;
-                doubleFee = doubleEndTime;
-                fee = fee + Convert.ToInt32(doubleFee) * 16;
+                if (((doubleStartTime - doubleEndTime) - Math.Floor(doubleStartTime - doubleEndTime)) == 0)
+                {
+                    doubleFee = 24 - doubleStartTime;
+                    fee = Convert.ToInt32(doubleFee) * 8;
+                    doubleFee = doubleEndTime;
+                    fee = fee + Convert.ToInt32(Math.Ceiling(doubleFee)) * 16;
+                    return fee;
+                }else if((24-doubleStartTime)-Math.Floor(24 - doubleStartTime) > 0)
+                {
+                    doubleFee = 24 - doubleStartTime;
+                    fee = Convert.ToInt32(Math.Ceiling(doubleFee)) * 8;
+                    doubleFee = doubleEndTime;
+                    fee = fee + Convert.ToInt32(doubleFee) * 16;
+                    return fee;
+                }
+                else if ((doubleEndTime) - Math.Floor(doubleEndTime) > 0)
+                {
+                    doubleFee = 24 - doubleStartTime;
+                    fee = Convert.ToInt32(doubleFee) * 8;
+                    doubleFee = doubleEndTime;
+                    fee = fee + Convert.ToInt32(Math.Ceiling(doubleFee)) * 16;
+                    return fee;
+                }else
+
 
                 return fee;
             }

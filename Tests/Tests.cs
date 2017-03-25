@@ -379,6 +379,24 @@ namespace Tests
             var result = babySitterFeeCalculator.CalculateRate(24.30, 15.00, 4.00);
             result.ShouldBe(64);
         }
+        [Fact]
+        public void CalculateRateStart5ThirtyPMBed3PmEnd1AM()
+        {
+            var result = babySitterFeeCalculator.CalculateRate(17.30, 15.00, 1.00);
+            result.ShouldBe(72);
+        }
+        [Fact]
+        public void CalculateRateStart5ThirtyPMBed3PmEnd1ThirtyAM()
+        {
+            var result = babySitterFeeCalculator.CalculateRate(17.30, 15.00, 1.30);
+            result.ShouldBe(80);
+        }
+        [Fact]
+        public void CalculateRateStart5PMBed3PmEnd1ThirtyAM()
+        {
+            var result = babySitterFeeCalculator.CalculateRate(17.00, 15.00, 1.30);
+            result.ShouldBe(88);
+        }
 
     } 
 }

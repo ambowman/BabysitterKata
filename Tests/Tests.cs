@@ -49,7 +49,15 @@ namespace Tests
         {
             string timeString = "5:00AM";
             var timeArray = babySitterFeeCalculator.MakeCharArray(timeString);
-            var result = babySitterFeeCalculator.RemoveAm(timeArray);
+            var result = babySitterFeeCalculator.RemoveAmPm(timeArray);
+            result.ShouldBe("5:00");
+        }
+        [Fact]
+        public void RemovePmFromCharArray()
+        {
+            string timeString = "5:00PM";
+            var timeArray = babySitterFeeCalculator.MakeCharArray(timeString);
+            var result = babySitterFeeCalculator.RemoveAmPm(timeArray);
             result.ShouldBe("5:00");
         }
     }

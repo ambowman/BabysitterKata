@@ -325,6 +325,48 @@ namespace Tests
             var result = babySitterFeeCalculator.CalculateRate(17.00, 18.00, 1.00);
             result.ShouldBe(76);
         }
+        [Fact]
+        public void CalculateRateStartMidBed10PmEnd3Am()
+        {
+            var result = babySitterFeeCalculator.CalculateRate(24.00, 22.00, 3.00);
+            result.ShouldBe(48);
+        }
+        [Fact]
+        public void CalculateRateStartMidBed1AmEnd3Am()
+        {
+            var result = babySitterFeeCalculator.CalculateRate(24.00, 1.00, 3.00);
+            result.ShouldBe(48);
+        }
+        [Fact]
+        public void CalculateRateStart5PMBed10PmEndMid()
+        {
+            var result = babySitterFeeCalculator.CalculateRate(17.00, 22.00, 24.00);
+            result.ShouldBe(76);
+        }
+        [Fact]
+        public void CalculateRateStart5PMBed1AmEndMid()
+        {
+            var result = babySitterFeeCalculator.CalculateRate(17.00, 1.00, 24.00);
+            result.ShouldBe(84);
+        }
+        [Fact]
+        public void CalculateRateStart10PMBedMidEnd1Am()
+        {
+            var result = babySitterFeeCalculator.CalculateRate(22.00, 24.00, 1.00);
+            result.ShouldBe(40);
+        }
+        [Fact]
+        public void CalculateRateStart10PMBedMidEndMid()
+        {
+            var result = babySitterFeeCalculator.CalculateRate(22.00, 24.00, 24.00);
+            result.ShouldBe(24);
+        }
+        [Fact]
+        public void CalculateRateStart5PMBed5PmEndMid()
+        {
+            var result = babySitterFeeCalculator.CalculateRate(17.00, 17.00, 24.00);
+            result.ShouldBe(56);
+        }
 
     } 
 }

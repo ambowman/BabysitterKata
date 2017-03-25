@@ -103,6 +103,12 @@ namespace BabysitterKat
                 convertedDoubleTime = MakeMilitaryTime(convertedDoubleTime, isPm);
                 return convertedDoubleTime;
             }
+            public bool CheckStartTime(double doubleStartTime)
+            {
+                if (doubleStartTime >= 17.00)
+                    return true;
+                return false;
+            }
 
         }
     }

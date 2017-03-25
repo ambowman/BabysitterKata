@@ -110,5 +110,17 @@ namespace Tests
             var result = babySitterFeeCalculator.ConvertTimeString("5:00PM");
             result.ShouldBe(17.00);
         }
+        [Fact]
+        public void CheckStartTimeAfter5PmWhenTimeIs6Pm()
+        {
+            var result = babySitterFeeCalculator.CheckStartTime(18.0);
+            result.ShouldBe(true);
+        }
+        [Fact]
+        public void CheckStartTime2Am()
+        {
+            var result = babySitterFeeCalculator.CheckStartTime(2.0);
+            result.ShouldBe(true);
+        }
     }
 }

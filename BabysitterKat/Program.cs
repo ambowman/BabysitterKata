@@ -210,9 +210,24 @@ namespace BabysitterKat
                 doubleEndTime = ConvertRawTimeDoubleToFractionalHours(doubleEndTime);
                 int fee = 0;
                 double doubleFee = 0.0;
-              
+                doubleFee = doubleEndTime - doubleStartTime;
+                fee = Convert.ToInt32(doubleFee) * 12;
                 return fee;
+            }
 
+            public int CalculateRateStartBeforeOrAtMidBedAndEndAfterMid(double doubleStartTime, double doubleEndTime)
+            {
+                doubleStartTime = ConvertRawTimeDoubleToFractionalHours(doubleStartTime);
+                doubleEndTime = ConvertRawTimeDoubleToFractionalHours(doubleEndTime);
+                int fee = 0;
+                double doubleFee = 0.0;
+ 
+                doubleFee = 24 - doubleStartTime;
+                fee = Convert.ToInt32(doubleFee) * 12;
+                doubleFee = doubleEndTime;
+                fee = fee + Convert.ToInt32(doubleFee) * 16;
+
+                return fee;
             }
         }
     }

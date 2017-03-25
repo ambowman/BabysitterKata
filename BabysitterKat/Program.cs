@@ -86,6 +86,8 @@ namespace BabysitterKat
             {
                 if (!isPm && doubleTimeDec == 12.0)
                     return doubleTimeDec + 12.0;
+                if(isPm && doubleTimeDec< 12.0)
+                    return doubleTimeDec + 12.0;
                 return doubleTimeDec;
             }
             

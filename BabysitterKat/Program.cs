@@ -78,6 +78,8 @@ namespace BabysitterKat
             public double ConvertTimeArrayToDouble(char[] timeArray)
             {
                 double timeDouble = 0.0;
+                string time = new string(timeArray);
+                timeDouble = Double.Parse(time);
                 return timeDouble;
             }
         }

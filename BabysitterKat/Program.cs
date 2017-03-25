@@ -60,6 +60,8 @@ namespace BabysitterKat
             }
             public char[] RemoveAm(char[] timeArray)
             {
+                timeArray = timeArray.Where(val => val != 'A').ToArray();
+                timeArray = timeArray.Where(val => val != 'M').ToArray();
                 return timeArray;
             }
         }

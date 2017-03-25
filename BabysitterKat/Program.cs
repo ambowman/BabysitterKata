@@ -117,7 +117,10 @@ namespace BabysitterKat
             }
             public bool CheckIsNoon(string time)
             {
-
+                if (time.Equals("12:00PM"))
+                {
+                    return true;
+                }
                 return false;
             }
 

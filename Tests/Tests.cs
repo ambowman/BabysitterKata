@@ -157,5 +157,11 @@ namespace Tests
             var result = babySitterFeeCalculator.CheckIsNoon("12:00PM");
             result.ShouldBe(true);
         }
+        [Fact]
+        public void CheckIsNoonWhenNotNoon()
+        {
+            var result = babySitterFeeCalculator.CheckIsNoon("1:00PM");
+            result.ShouldBe(false);
+        }
     }
 }

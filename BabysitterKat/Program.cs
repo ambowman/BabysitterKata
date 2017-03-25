@@ -196,6 +196,11 @@ namespace BabysitterKat
                 int fee = 0;
                 double doubleFee = 0.0;
 
+                doubleFee = 24 - doubleStartTime;
+                fee = Convert.ToInt32(doubleFee) * 8;
+                doubleFee = doubleEndTime;
+                fee = fee + Convert.ToInt32(doubleFee) * 16;
+
                 return fee;
             }
         }

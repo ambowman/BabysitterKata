@@ -203,7 +203,7 @@ namespace Tests
         public void BedtimeBeforeOrEqualStartBothBeforeMidEndAfterMid5PmBed3PmEnd1Am()
         {
             var result = babySitterFeeCalculator.CalculateRateBedtimeBeforeOrEqualStartBothBeforeMidEndAfterMid(17.00, 1.00);
-            result.ShouldBe(48);
+            result.ShouldBe(72);
         }
     } 
 }

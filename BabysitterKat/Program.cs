@@ -105,8 +105,19 @@ namespace BabysitterKat
             }
             public bool CheckStartTime(double doubleStartTime)
             {
-                if (doubleStartTime >= 17.00)
+                if (doubleStartTime >= 17.00 || doubleStartTime < 4.00)
                     return true;
+                return false;
+            }
+            public bool CheckEndTime(double doubleEndTime, double doubleStartTime)
+            {
+                if ((doubleEndTime <= 4.00 || doubleEndTime > 17.00) && doubleEndTime != doubleStartTime)
+                    return true;
+                return false;
+            }
+            public bool CheckIsNoon(string time)
+            {
+
                 return false;
             }
 

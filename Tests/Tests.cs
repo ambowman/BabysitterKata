@@ -122,5 +122,40 @@ namespace Tests
             var result = babySitterFeeCalculator.CheckStartTime(2.0);
             result.ShouldBe(true);
         }
+        [Fact]
+        public void CheckStartTimeWhenTimeIs3Pm()
+        {
+            var result = babySitterFeeCalculator.CheckStartTime(15.0);
+            result.ShouldBe(false);
+        }
+        public void CheckStartTimeNotBetween5PmAnd4Am()
+        {
+            var result = babySitterFeeCalculator.CheckStartTime(6.0);
+            result.ShouldBe(false);
+        }
+        [Fact]
+        public void CheckEndTimeNoLaterThan4Am()
+        {
+            var result = babySitterFeeCalculator.CheckEndTime(3.0, 17.0);
+            result.ShouldBe(true);
+        }
+        [Fact]
+        public void CheckEndTimeLaterThan4Am()
+        {
+            var result = babySitterFeeCalculator.CheckEndTime(5.0, 17.0);
+            result.ShouldBe(false);
+        }
+        [Fact]
+        public void CheckEndTimeNoLaterThan4AmAndNotEqualStartTime()
+        {
+            var result = babySitterFeeCalculator.CheckEndTime(5.0, 17.0);
+            result.ShouldBe(false);
+        }
+        [Fact]
+        public void CheckIsNoonWhenNoonIsTrue()
+        {
+            var result = babySitterFeeCalculator.CheckIsNoon("12:00PM");
+            result.ShouldBe(true);
+        }
     }
 }

@@ -203,6 +203,17 @@ namespace BabysitterKat
 
                 return fee;
             }
+
+            public int CalculateRateStartBeforeMidBedtimeEqualsOrAfterEndAndEndBeforeMid(double doubleStartTime, double doubleEndTime)
+            {
+                doubleStartTime = ConvertRawTimeDoubleToFractionalHours(doubleStartTime);
+                doubleEndTime = ConvertRawTimeDoubleToFractionalHours(doubleEndTime);
+                int fee = 0;
+                double doubleFee = 0.0;
+              
+                return fee;
+
+            }
         }
     }
 }

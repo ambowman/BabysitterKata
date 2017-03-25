@@ -313,6 +313,12 @@ namespace Tests
             var result = babySitterFeeCalculator.CalculateRate(17.00, 2.00, 1.00);
             result.ShouldBe(100);
         }
+        [Fact]
+        public void CalculateRateStart5PmBed6PmEnd11Pm()
+        {
+            var result = babySitterFeeCalculator.CalculateRate(17.00, 18.00, 23.00);
+            result.ShouldBe(52);
+        }
 
     } 
 }

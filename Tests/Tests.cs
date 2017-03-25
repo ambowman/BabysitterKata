@@ -68,5 +68,13 @@ namespace Tests
             var result = babySitterFeeCalculator.RemoveColon(timeArray);
             result.ShouldBe("5.00");
         }
+        [Fact]
+        public void ConvertTimeArrayToDouble()
+        {
+            string timeString = "5.00";
+            var timeArray = babySitterFeeCalculator.MakeCharArray(timeString);
+            var result = babySitterFeeCalculator.ConvertTimeArrayToDouble(timeArray);
+            result.ShouldBe(5.00);
+        }
     }
 }

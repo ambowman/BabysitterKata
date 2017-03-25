@@ -75,6 +75,11 @@ namespace BabysitterKat
                 }
                 return timeArray;
             }
+            public double ConvertTimeArrayToDouble(char[] timeArray)
+            {
+                double timeDouble = 0.0;
+                return timeDouble;
+            }
         }
     }
 }

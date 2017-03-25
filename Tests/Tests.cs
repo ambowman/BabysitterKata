@@ -28,5 +28,21 @@ namespace Tests
             result[5].ShouldBeOfType<char>();
             result[0].ShouldBe('5');
         }
+        [Fact]
+        public void CheckAmOrPmWhenGivenATimeWithPm()
+        {
+            string timeString = "5:00PM";
+            var result = babySitterFeeCalculator.CheckAmOrPm(timeString);
+            result.ShouldBe(true);
+
+        }
+        [Fact]
+        public void CheckAmOrPmWhenGivenATimeWithAm()
+        {
+            string timeString = "5:00AM";
+            var result = babySitterFeeCalculator.CheckAmOrPm(timeString);
+            result.ShouldBe(false);
+
+        }
     }
 }

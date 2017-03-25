@@ -50,6 +50,14 @@ namespace BabysitterKat
                 char[] timeArray = new char[time.Length]; 
                 return timeArray = time.ToCharArray();
             }
+            public bool CheckAmOrPm(string time)
+            {
+                if (time.EndsWith("PM"))
+                {
+                    return true;
+                }
+                return false;
+            }
         }
     }
 }

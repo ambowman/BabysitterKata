@@ -23,7 +23,7 @@ namespace BabysitterKat
 
             int totalFee = 0;
 
-            while (!end.Equals("yes"))
+            while (!end.Equals("YES"))
             {
                 Console.WriteLine("Welcome to the babysitter fee calculator!");
                 Console.WriteLine("Please enter the times in this format: XX:XXPM Midnight is 12:00AM");
@@ -36,6 +36,9 @@ namespace BabysitterKat
                 Console.WriteLine("What time is the child's bedtime:");
                 bedTime = Console.ReadLine();
                 doubleBedTime = babySitterFeeCalculator.ConvertTimeString(bedTime);
+
+                totalFee = babySitterFeeCalculator.CalculateRate(doubleStartTime, doubleBedTime, doubleEndTime);
+                Console.WriteLine("Total fee = $" + totalFee);
                 Console.WriteLine("Are you done calculating babysitting fees? Enter YES/NO");
                 end = Console.ReadLine();
                 end = end.ToUpper();
@@ -87,7 +90,7 @@ namespace BabysitterKat
             }
             public double MakeMilitaryTime(double doubleTimeDec, bool isPm)
             {
-                if (!isPm && doubleTimeDec == 12.0)
+                if (!isPm && doubleTimeDec >= 12.0)
                     return doubleTimeDec + 12.0;
                 if (isPm && doubleTimeDec < 12.0)
                     return doubleTimeDec + 12.0;
@@ -171,8 +174,15 @@ namespace BabysitterKat
                 int fee = 0;
                 double doubleFee = 0.0;
 
-                doubleFee = doubleEndTime - doubleStartTime;
-                fee = Convert.ToInt32(doubleFee) * 16;
+                if (doubleStartTime < doubleEndTime)
+                {
+                    doubleFee = doubleEndTime - doubleStartTime;
+                    fee = Convert.ToInt32(Math.Ceiling(doubleFee)) * 16;
+                }else if(doubleStartTime > doubleEndTime)
+                {
+                    doubleFee = doubleEndTime - (doubleStartTime - 24);
+                    fee = Convert.ToInt32(Math.Ceiling(doubleFee)) * 16;
+                }
 
                 return fee;
             }
@@ -184,7 +194,7 @@ namespace BabysitterKat
                 int fee = 0;
                 double doubleFee = 0.0;
                 doubleFee = doubleEndTime - doubleStartTime;
-                fee = Convert.ToInt32(doubleFee) * 8;
+                fee = Convert.ToInt32(Math.Ceiling(doubleFee)) * 8;
 
                 return fee;
             }
@@ -211,7 +221,7 @@ namespace BabysitterKat
                 int fee = 0;
                 double doubleFee = 0.0;
                 doubleFee = doubleEndTime - doubleStartTime;
-                fee = Convert.ToInt32(doubleFee) * 12;
+                fee = Convert.ToInt32(Math.Ceiling(doubleFee)) * 12;
                 return fee;
             }
 
@@ -267,7 +277,7 @@ namespace BabysitterKat
 
                 int fee = 0;
 
-                if (doubleStartTime < doubleEndTime && doubleEndTime <= 4.0 && doubleStartTime < 4.0 )
+                if (doubleEndTime <= 4.0 && (doubleStartTime < 4.0 || doubleStartTime > 24) )
                 {
                     fee = CalculateRateStartAndEndAfterMid(doubleStartTime, doubleEndTime);
                     return fee;

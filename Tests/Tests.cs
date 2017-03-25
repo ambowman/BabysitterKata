@@ -60,5 +60,13 @@ namespace Tests
             var result = babySitterFeeCalculator.RemoveAmPm(timeArray);
             result.ShouldBe("5:00");
         }
+        [Fact]
+        public void RemoveColonFromCharArray()
+        {
+            string timeString = "5:00";
+            var timeArray = babySitterFeeCalculator.MakeCharArray(timeString);
+            var result = babySitterFeeCalculator.RemoveColon(timeArray);
+            result.ShouldBe("5.00");
+        }
     }
 }

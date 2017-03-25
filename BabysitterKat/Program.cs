@@ -65,6 +65,16 @@ namespace BabysitterKat
                 timeArray = timeArray.Where(val => val != 'M').ToArray();
                 return timeArray;
             }
+            public char[] RemoveColon(char[] timeArray)
+            {
+                int i = 0;
+                for (; i < timeArray.Length; ++i)
+                {
+                    if (timeArray[i] == ':')
+                        timeArray[i] = '.';
+                }
+                return timeArray;
+            }
         }
     }
 }

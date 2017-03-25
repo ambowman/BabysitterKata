@@ -1,0 +1,6 @@
+C:\Dev\Projects\BabysitterKata\BabysitterKat\bin\Debug\BabysitterKat.exe.config
+C:\Dev\Projects\BabysitterKata\BabysitterKat\bin\Debug\BabysitterKat.exe
+C:\Dev\Projects\BabysitterKata\BabysitterKat\bin\Debug\BabysitterKat.pdb
+C:\Dev\Projects\BabysitterKata\BabysitterKat\obj\Debug\BabysitterKat.csprojResolveAssemblyReference.cache
+C:\Dev\Projects\BabysitterKata\BabysitterKat\obj\Debug\BabysitterKat.exe
+C:\Dev\Projects\BabysitterKata\BabysitterKat\obj\Debug\BabysitterKat.pdb

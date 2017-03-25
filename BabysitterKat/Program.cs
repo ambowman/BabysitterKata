@@ -33,13 +33,18 @@ namespace BabysitterKat
                 endTime = Console.ReadLine();
                 Console.WriteLine("What time is the child's bedtime:");
                 bedTime = Console.ReadLine();
-                Console.WriteLine("DO you wish to end this:");
+                Console.WriteLine("Are you done calculating babysitting fees? Enter YES/NO");
                 end = Console.ReadLine();
+                end = end.ToUpper();
             }
 
         }
         public class BabySitterFeeCalculator
         {
+            public string TakeTimeString(string timeString)
+            {
+                return timeString;
+            }
 
         }
     }

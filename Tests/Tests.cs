@@ -1,9 +1,4 @@
 ﻿using Shouldly;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Tests
@@ -454,9 +449,63 @@ namespace Tests
         [Fact]
         public void CalculateRateStart5PMBed7ThirtyPmEnd11FifteenPM()
         {
-            var result = babySitterFeeCalculator.CalculateRate(17.00, 19.30, 23.45);
+            var result = babySitterFeeCalculator.CalculateRate(17.00, 19.30, 23.15);
             result.ShouldBe(60);
         }
+        [Fact]
+        public void CalculateRateStart5PMBed7ThirtyPmEnd11FortyFivePM()
+        {
+            var result = babySitterFeeCalculator.CalculateRate(17.00, 19.30, 23.45);
+            result.ShouldBe(68);
+        }
+        [Fact]
+        public void CalculateRateStart5ThirtyPMBed7PmEnd1ThirtyPM()
+        {
+            var result = babySitterFeeCalculator.CalculateRate(17.30, 19.00, 1.30);
+            result.ShouldBe(84);
+        }
+        [Fact]
+        public void CalculateRateStart5ThirtyPMBed7ThirtyPmEnd1ThirtyPM()
+        {
+            var result = babySitterFeeCalculator.CalculateRate(17.30, 19.30, 1.30);
+            result.ShouldBe(88);
+        }
+        [Fact]
+        public void CalculateRateStart5PMBed7PmEnd1PM()
+        {
+            var result = babySitterFeeCalculator.CalculateRate(17.00, 19.00, 1.00);
+            result.ShouldBe(80);
+        }
+        [Fact]
+        public void CalculateRateStart5PMBed7ThirtyPmEnd1PM()
+        {
+            var result = babySitterFeeCalculator.CalculateRate(17.00, 19.30, 1.00);
+            result.ShouldBe(84);
+        }
+        [Fact]
+        public void CalculateRateStart5ThirtyPMBed7PmEnd1PM()
+        {
+            var result = babySitterFeeCalculator.CalculateRate(17.30, 19.00, 1.00);
+            result.ShouldBe(80);
+        }
+        [Fact]
+        public void CalculateRateStart5ThirtyPMBed7ThirtyPmEnd1PM()
+        {
+            var result = babySitterFeeCalculator.CalculateRate(17.30, 19.00, 1.00);
+            result.ShouldBe(80);
+        }
+        [Fact]
+        public void CalculateRateStart5PMBed7PmEnd1ThirtyPM()
+        {
+            var result = babySitterFeeCalculator.CalculateRate(17.00, 19.00, 1.30);
+            result.ShouldBe(96);
+        }
+        [Fact]
+        public void CalculateRateStart5PMBed7ThirtyPmEnd1ThirtyPM()
+        {
+            var result = babySitterFeeCalculator.CalculateRate(17.00, 19.30, 1.30);
+            result.ShouldBe(100);
+        }
 
-    } 
+    }
 }
